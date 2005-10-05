@@ -1,23 +1,24 @@
 Summary:	AIM transport for Jabber
+Summary(pl):	Transport AIM dla Jabbera
 Name:		pyaim-t
 Version:	0.6
 Release:	1
 License:	GPL v2
 Group:		Applications/Communications
-Source0:	http://www.blathersource.org/download.php/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://www.blathersource.org/download.php/pyaim-t/%{name}-%{version}.tar.gz
 # Source0-md5:	cf20fd8593a8463426e720c2faf7d629
-Source2:	pyaim-t.init
-Source3:	pyaim-t.sysconfig
-Source4:	pyaim-t.xml
+Source2:	%{name}.init
+Source3:	%{name}.sysconfig
+Source4:	%{name}.xml
 URL:		http://pyaim-t.blathersource.org/
-PreReq:		rc-scripts
-Requires:	python-TwistedWeb
-Requires:	python-TwistedWords
-Requires:	python-TwistedXish
 Requires(post):	jabber-common
 Requires(post):	perl-base
 Requires(post):	textutils
 Requires(post,preun):	/sbin/chkconfig
+Requires:	python-TwistedWeb
+Requires:	python-TwistedWords
+Requires:	python-TwistedXish
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,12 +26,10 @@ This module allows Jabber to communicate with AIM servers.
 
 %description -l pl
 Modu³ ten umo¿liwia u¿ytkownikom Jabbera komunikowanie siê z
-u¿ytkownikami AIM.
+serwerami AIM.
 
 %prep
 %setup -q
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -74,6 +73,6 @@ fi
 %doc AUTHORS ChangeLog README INSTALL
 %attr(755,root,root) %{_sbindir}/PyAIMt
 %{_libdir}/%{name}
-%attr(640,root,jabber) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/jabber/*
+%attr(640,root,jabber) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/jabber/*
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/%{name}
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
