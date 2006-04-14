@@ -12,7 +12,7 @@ Source3:	%{name}.sysconfig
 Source4:	%{name}.xml
 URL:		http://pyaim-t.blathersource.org/
 Requires(post):	jabber-common
-Requires(post):	perl-base
+Requires(post):	sed >= 4.0
 Requires(post):	textutils
 Requires(post,preun):	/sbin/chkconfig
 Requires:	python-TwistedWeb
@@ -25,8 +25,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This module allows Jabber to communicate with AIM servers.
 
 %description -l pl
-Modu³ ten umo¿liwia u¿ytkownikom Jabbera komunikowanie siê z
-serwerami AIM.
+Modu³ ten umo¿liwia u¿ytkownikom Jabbera komunikowanie siê z serwerami
+AIM.
 
 %prep
 %setup -q
@@ -45,11 +45,11 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/jabber/aimtrans.xml
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /etc/jabber/secret ] ; then
-	SECRET=`cat /etc/jabber/secret`
+if [ -f %{_sysconfdir}/jabber/secret ] ; then
+	SECRET=`cat %{_sysconfdir}/jabber/secret`
 	if [ -n "$SECRET" ] ; then
-        	echo "Updating component authentication secret in the config file..."
-		perl -pi -e "s/>secret</>$SECRET</" /etc/jabber/pyaim-t.xml
+		echo "Updating component authentication secret in the config file..."
+		%{__sed} -i -e "s/>secret</>$SECRET</" /etc/jabber/pyaim-t.xml
 	fi
 fi
 
