@@ -1,5 +1,5 @@
 Summary:	AIM transport for Jabber
-Summary(pl):	Transport AIM dla Jabbera
+Summary(pl.UTF-8):   Transport AIM dla Jabbera
 Name:		pyaim-t
 Version:	0.6
 Release:	1
@@ -24,8 +24,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This module allows Jabber to communicate with AIM servers.
 
-%description -l pl
-Modu≥ ten umoøliwia uøytkownikom Jabbera komunikowanie siÍ z serwerami
+%description -l pl.UTF-8
+Modu≈Ç ten umo≈ºliwia u≈ºytkownikom Jabbera komunikowanie siƒô z serwerami
 AIM.
 
 %prep
