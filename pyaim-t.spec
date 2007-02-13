@@ -1,5 +1,5 @@
 Summary:	AIM transport for Jabber
-Summary(pl.UTF-8):   Transport AIM dla Jabbera
+Summary(pl.UTF-8):	Transport AIM dla Jabbera
 Name:		pyaim-t
 Version:	0.6
 Release:	1
